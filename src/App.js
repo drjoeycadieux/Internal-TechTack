@@ -1,46 +1,15 @@
 import './App.css';
 
-import { useState, useEffect } from 'react';
-import { supabase } from './client';
+import { Routes, Route, Link } from "react-router-dom";
 
-function App() {
-  const { user, setUser } = useState(null);
-  useEffect(() => {
-    checkUser();
-    window.addEventListener('hashchange', function () {
-      checkUser();
-    })
-  }, [])
-  async function checkUser() {
-    const user = supabase.auth.user();
-    setUser(user);
-  }
-  async function signInWithGithub() {
-    await supabase.auth.signIn({
-      provider: 'github'
-    });
-    async function signOut() {
-      await supabase.auth.signOut();
-      setUser(null);
-    }
-    if (user) {
-      return (
-        <div className="App">
-          <h2>Welcome Back! {user.email}</h2>
-          <button onClick={signOut()}>Sign Out</button>
-        </div>
-      )
-    }
-  }
+
+export default function App() {
   return (
-    <div className="header">
-      <h1>TechTack Technologies</h1>
-      <div className='header'>
-        <h2>Login to your account</h2>
-        <button onClick={signInWithGithub()}>Login</button>
-      </div>
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+      </Routes>
     </div>
-  );
+  )
 }
-
-export default App;
