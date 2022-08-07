@@ -33,10 +33,12 @@ function App() {
     }
   }
   return (
-    <div className="App">
+    <div className="header">
       <h1>TechTack Technologies</h1>
-      <h2>Login to your account</h2>
-      <button onClick={signInWithGithub()}>Login</button>
+      <div className='header'>
+        <h2>Login to your account</h2>
+        <button onClick={signInWithGithub()}>Login</button>
+      </div>
     </div>
   );
 }
