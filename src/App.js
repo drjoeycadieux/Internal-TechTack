@@ -34,6 +34,7 @@ function App() {
   }
   return (
     <div className="App">
+      <h1>TechTack Technologies</h1>
       <h2>Login to your account</h2>
       <button onClick={signInWithGithub()}>Login</button>
     </div>
